@@ -5,7 +5,7 @@ import ArrowRandom from "../components/ArrowRandom";
 import MyFooter from "../components/MyFooter";
 
 const Home = () => {
-  const sound = new Audio("./sounds/button-3.wav");
+  // const sound = new Audio("./sounds/button-3.wav");
   const [isRunning, setIsRunning] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [direction, setDirection] = useState("");
@@ -24,10 +24,10 @@ const Home = () => {
             directions[Math.floor(Math.random() * directions.length)];
 
           setDirection(randomDirection);
-          sound.play();
+          // sound.play();
         } else {
           setDirection(randomDirection);
-          sound.play();
+          // sound.play();
         }
       }, 1500 / (speed / 2));
     }

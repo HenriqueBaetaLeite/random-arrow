@@ -9,8 +9,8 @@ const oneMinute = 60000;
 const BackgroundSwitcher = () => {
   const [isRed, setIsRed] = useState(true);
   const [finish, setFinish] = useState(false);
-  const sound = new Audio("./sounds/button-3.wav");
-  const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
+  // const sound = new Audio("./sounds/button-3.wav");
+  // // const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
 
   let switchTimeOut;
   let interval;
@@ -21,7 +21,7 @@ const BackgroundSwitcher = () => {
 
   const finishGame = () => {
     setFinish(true);
-    soundFinished.play();
+    // soundFinished.play();
     clearTimeout(switchTimeOut);
     clearInterval(interval);
   };
@@ -33,7 +33,7 @@ const BackgroundSwitcher = () => {
 
     interval = setInterval(() => {
       setIsRed((prevIsRed) => !prevIsRed);
-      sound.play();
+      // sound.play();
     }, 2500);
 
     switchTimeOut = setTimeout(() => {
