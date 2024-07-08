@@ -1,13 +1,13 @@
-import right from "./right.png";
-import up from "./up.png";
-import left from "./left.png";
+import right from "./right2.png";
+import up from "./up2.png";
+import left from "./left2.png";
 import Image from "next/image";
 
-const arrowWidth = 600;
+const arrowWidth = 700;
 
 const RightArrow = () => <Image src={right} alt="right" width={arrowWidth} />;
 
-const UpArrow = () => <Image src={up} alt="up" width={arrowWidth} />;
+const UpArrow = () => <Image src={up} alt="up" width={350} />;
 
 const LeftArrow = () => <Image src={left} alt="left" width={arrowWidth} />;
 
