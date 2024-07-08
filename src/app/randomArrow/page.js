@@ -3,6 +3,14 @@ import React, { useState, useEffect } from "react";
 import BackHomeButton from "../components/BackHomeButton";
 import ArrowRandom from "../components/ArrowRandom";
 import MyFooter from "../components/MyFooter";
+import StartStopButton from "../components/StartStopButton";
+import SlideSpeed from "../components/SlideSpeed";
+
+const directions = ["up", "left", "right"];
+
+const randomizeDirection = () => {
+  return directions[Math.floor(Math.random() * directions.length)];
+};
 
 const Home = () => {
   // const sound = new Audio("./sounds/button-3.wav");
@@ -10,29 +18,25 @@ const Home = () => {
   const [speed, setSpeed] = useState(1);
   const [direction, setDirection] = useState("");
 
-  const directions = ["up", "left", "right"];
-
   useEffect(() => {
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        const randomDirection =
-          directions[Math.floor(Math.random() * directions.length)];
+        const randomDirection = randomizeDirection();
 
         if (randomDirection === direction) {
-          const randomDirection =
-            directions[Math.floor(Math.random() * directions.length)];
+          // sound.play();
+          const randomDirection = randomizeDirection();
 
           setDirection(randomDirection);
-          // sound.play();
         } else {
-          setDirection(randomDirection);
           // sound.play();
+          setDirection(randomDirection);
         }
-      }, 1500 / (speed / 2));
+      }, 1500 / (speed / 2.5));
     }
     return () => clearInterval(interval);
-  }, [isRunning, speed, directions]);
+  }, [isRunning, speed, direction]);
 
   const startGame = () => {
     setIsRunning(true);
@@ -48,24 +52,16 @@ const Home = () => {
         "flex flex-col items-center justify-center h-screen bg-gray-200"
       }
     >
-      <div className="m-4 flex flex-col justify-center items-center">
-        <label className="m-1 text-black">Speed:</label>
-        <input
-          type="range"
-          min="1"
-          max="5"
-          value={speed}
-          onChange={(e) => setSpeed(Number(e.target.value))}
-        />
-      </div>
+      <SlideSpeed speed={speed} setSpeed={setSpeed} />
+
       {isRunning && <ArrowRandom direction={direction} />}
 
-      <button
-        className="m-6 px-4 py-2 bg-green-500 dark:text-white rounded hover:bg-green-700 transition"
-        onClick={isRunning ? () => stopGame() : () => startGame()}
-      >
-        {isRunning ? "Stop" : "Start"}
-      </button>
+      <StartStopButton
+        isRunning={isRunning}
+        startGame={startGame}
+        stopGame={stopGame}
+      />
+
       {!isRunning && <BackHomeButton />}
       {!isRunning && <MyFooter />}
     </div>
