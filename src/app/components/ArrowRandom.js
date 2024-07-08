@@ -1,10 +1,21 @@
+import right from "./right.png";
+import up from "./up.png";
+import left from "./left.png";
+import Image from "next/image";
+
+const RightArrow = () => <Image src={right} alt="right" width={300} />;
+
+const UpArrow = () => <Image src={up} alt="up" width={300} />;
+
+const LeftArrow = () => <Image src={left} alt="left" width={300} />;
+
 const Arrow = ({ direction }) => {
   return (
     <div className="flex items-center justify-center h-full">
-      <div className="text-9xl text-white-800 font-bold">
-        {direction === "up" && "↑"}
-        {direction === "left" && "←"}
-        {direction === "right" && "→"}
+      <div>
+        {direction === "up" && <UpArrow />}
+        {direction === "left" && <LeftArrow />}
+        {direction === "right" && <RightArrow />}
       </div>
     </div>
   );

@@ -45,11 +45,11 @@ const Home = () => {
   return (
     <div
       className={
-        "flex flex-col items-center justify-center h-screen bg-gray-700"
+        "flex flex-col items-center justify-center h-screen bg-gray-200"
       }
     >
       <div className="m-4 flex flex-col justify-center items-center">
-        <label className="m-1">Velocidade:</label>
+        <label className="m-1 text-black">Velocidade:</label>
         <input
           type="range"
           min="1"

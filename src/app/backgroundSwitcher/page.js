@@ -19,16 +19,19 @@ const BackgroundSwitcher = () => {
     startTimer();
   };
 
+  const clearingTimer = () => {
+    clearInterval(interval);
+    clearTimeout(switchTimeOut);
+  };
+
   const finishGame = () => {
     setFinish(true);
     // soundFinished.play();
-    clearTimeout(switchTimeOut);
-    clearInterval(interval);
+    clearingTimer();
   };
 
   const startTimer = () => {
-    clearInterval(interval);
-    clearTimeout(switchTimeOut);
+    clearingTimer();
     setFinish(false);
 
     interval = setInterval(() => {
@@ -44,8 +47,7 @@ const BackgroundSwitcher = () => {
   useEffect(() => {
     startTimer();
     return () => {
-      clearInterval(interval);
-      clearTimeout(switchTimeOut);
+      clearingTimer();
     };
   }, []);
 
