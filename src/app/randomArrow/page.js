@@ -49,11 +49,11 @@ const Home = () => {
       }
     >
       <div className="m-4 flex flex-col justify-center items-center">
-        <label className="m-1 text-black">Velocidade:</label>
+        <label className="m-1 text-black">Speed:</label>
         <input
           type="range"
           min="1"
-          max="4"
+          max="5"
           value={speed}
           onChange={(e) => setSpeed(Number(e.target.value))}
         />
@@ -66,9 +66,8 @@ const Home = () => {
       >
         {isRunning ? "Stop" : "Start"}
       </button>
-
-      <BackHomeButton />
-      <MyFooter />
+      {!isRunning && <BackHomeButton />}
+      {!isRunning && <MyFooter />}
     </div>
   );
 };

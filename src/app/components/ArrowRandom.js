@@ -3,11 +3,13 @@ import up from "./up.png";
 import left from "./left.png";
 import Image from "next/image";
 
-const RightArrow = () => <Image src={right} alt="right" width={300} />;
+const arrowWidth = 600;
 
-const UpArrow = () => <Image src={up} alt="up" width={300} />;
+const RightArrow = () => <Image src={right} alt="right" width={arrowWidth} />;
 
-const LeftArrow = () => <Image src={left} alt="left" width={300} />;
+const UpArrow = () => <Image src={up} alt="up" width={arrowWidth} />;
+
+const LeftArrow = () => <Image src={left} alt="left" width={arrowWidth} />;
 
 const Arrow = ({ direction }) => {
   return (
