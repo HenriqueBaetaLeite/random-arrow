@@ -6,10 +6,7 @@ const SlideSpeed = ({ speed, setSpeed, min, max }) => (
       min={min}
       max={max}
       value={speed}
-      onChange={(e) => {
-        console.log(e.target.value);
-        setSpeed(Number(e.target.value));
-      }}
+      onChange={(e) => setSpeed(Number(e.target.value))}
     />
   </div>
 );
