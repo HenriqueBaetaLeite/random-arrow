@@ -13,8 +13,8 @@ const BackgroundSwitcher = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [finish, setFinish] = useState(false);
   const [speed, setSpeed] = useState(2500);
-  const sound = new Audio("./sounds/button-3.wav");
-  const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
+  // const sound = new Audio("./sounds/button-3.wav");
+  // const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
 
   let switchTimeOut;
   let interval;
@@ -27,7 +27,7 @@ const BackgroundSwitcher = () => {
   const finishGame = () => {
     clearingTimer();
     setFinish(true);
-    soundFinished.play();
+    // soundFinished.play();
   };
 
   const startTimer = () => {
@@ -36,7 +36,7 @@ const BackgroundSwitcher = () => {
 
     interval = setInterval(() => {
       setIsRed((prevIsRed) => !prevIsRed);
-      sound.play();
+      // sound.play();
     }, speed);
 
     switchTimeOut = setTimeout(() => {
