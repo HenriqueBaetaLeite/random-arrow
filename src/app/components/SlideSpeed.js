@@ -1,12 +1,15 @@
-const SlideSpeed = ({ speed, setSpeed }) => (
+const SlideSpeed = ({ speed, setSpeed, min, max }) => (
   <div className="m-4 flex flex-col justify-center items-center">
-    <label className="m-1 text-black font-semibold">Speed:</label>
+    <label className="m-1 text-black font-semibold">Velocidade:</label>
     <input
       type="range"
-      min="1"
-      max="5"
+      min={min}
+      max={max}
       value={speed}
-      onChange={(e) => setSpeed(Number(e.target.value))}
+      onChange={(e) => {
+        console.log(e.target.value);
+        setSpeed(Number(e.target.value));
+      }}
     />
   </div>
 );

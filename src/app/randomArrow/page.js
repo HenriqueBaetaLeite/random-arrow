@@ -5,14 +5,9 @@ import ArrowRandom from "../components/ArrowRandom";
 import MyFooter from "../components/MyFooter";
 import StartStopButton from "../components/StartStopButton";
 import SlideSpeed from "../components/SlideSpeed";
+import { intervalTimer } from "../../../public/utils/randomizeDirection";
 
-const directions = ["up", "left", "right"];
-
-const randomizeDirection = () => {
-  return directions[Math.floor(Math.random() * directions.length)];
-};
-
-const Home = () => {
+const RandomArrow = () => {
   // const sound = new Audio("./sounds/button-3.wav");
   const [isRunning, setIsRunning] = useState(false);
   const [speed, setSpeed] = useState(1);
@@ -22,29 +17,11 @@ const Home = () => {
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        const randomDirection = randomizeDirection();
-
-        if (randomDirection === direction) {
-          // sound.play();
-          const randomDirection = randomizeDirection();
-
-          setDirection(randomDirection);
-        } else {
-          // sound.play();
-          setDirection(randomDirection);
-        }
+        intervalTimer(setDirection, direction);
       }, 1500 / (speed / 2.5));
     }
     return () => clearInterval(interval);
   }, [isRunning, speed, direction]);
-
-  const startGame = () => {
-    setIsRunning(true);
-  };
-
-  const stopGame = () => {
-    setIsRunning(false);
-  };
 
   return (
     <div
@@ -52,15 +29,11 @@ const Home = () => {
         "flex flex-col items-center justify-center h-screen bg-gray-200"
       }
     >
-      <SlideSpeed speed={speed} setSpeed={setSpeed} />
+      <SlideSpeed speed={speed} setSpeed={setSpeed} min={1} max={5} />
 
       {isRunning && <ArrowRandom direction={direction} />}
 
-      <StartStopButton
-        isRunning={isRunning}
-        startGame={startGame}
-        stopGame={stopGame}
-      />
+      <StartStopButton isRunning={isRunning} setIsRunning={setIsRunning} />
 
       {!isRunning && <BackHomeButton />}
       {!isRunning && <MyFooter />}
@@ -68,4 +41,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default RandomArrow;
