@@ -5,14 +5,16 @@ import RestartTimerButton from "../components/RestartTimerButton";
 import MyFooter from "../components/MyFooter";
 import SlideSpeed from "../components/SlideSpeed";
 import GreenButton from "../components/GreenButton";
+import InputTimer from "../components/InputTimer";
 
-const oneMinute = 60000;
+import { randomizeBackGround } from "../../../public/utils/randomize";
 
 const BackgroundSwitcher = () => {
-  const [isRed, setIsRed] = useState(true);
   const [isRunning, setIsRunning] = useState(false);
   const [finish, setFinish] = useState(false);
   const [speed, setSpeed] = useState(2500);
+  const [background, setBackground] = useState(randomizeBackGround());
+  const [timer, setTimer] = useState("");
   // const sound = new Audio("./sounds/button-3.wav");
   // const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
 
@@ -35,13 +37,13 @@ const BackgroundSwitcher = () => {
     setFinish(false);
 
     interval = setInterval(() => {
-      setIsRed((prevIsRed) => !prevIsRed);
+      setBackground(randomizeBackGround());
       // sound.play();
     }, speed);
 
     switchTimeOut = setTimeout(() => {
       finishGame();
-    }, oneMinute);
+    }, timer * 1000);
   };
 
   useEffect(() => {
@@ -58,12 +60,9 @@ const BackgroundSwitcher = () => {
       {!isRunning && (
         <div className="flex flex-col items-center justify-center m-3">
           <div>
-            <SlideSpeed
-              speed={speed}
-              setSpeed={setSpeed}
-              min={1000}
-              max={5000}
-            />
+            <SlideSpeed speed={speed} setSpeed={setSpeed} />
+            <InputTimer timer={timer} setTimer={setTimer} />
+
             <GreenButton
               text={"Iniciar"}
               onClicker={() => setIsRunning(true)}
@@ -76,9 +75,7 @@ const BackgroundSwitcher = () => {
       )}
       {!finish && isRunning && (
         <div
-          className={`w-full h-screen transition-colors duration-500 flex justify-center items-end ${
-            isRed ? "bg-red-500" : "bg-blue-500"
-          }`}
+          className={`w-full h-screen transition-colors duration-500 flex justify-center items-end ${background}`}
         ></div>
       )}
       {finish && (
@@ -88,12 +85,8 @@ const BackgroundSwitcher = () => {
           </h1>
 
           <div>
-            <SlideSpeed
-              speed={speed}
-              setSpeed={setSpeed}
-              min={1000}
-              max={5000}
-            />
+            <SlideSpeed speed={speed} setSpeed={setSpeed} />
+            <InputTimer timer={timer} setTimer={setTimer} />
 
             <RestartTimerButton restartTimer={startTimer} />
             <BackHomeButton />

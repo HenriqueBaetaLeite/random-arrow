@@ -5,7 +5,7 @@ import ArrowRandom from "../components/ArrowRandom";
 import MyFooter from "../components/MyFooter";
 import StartStopButton from "../components/StartStopButton";
 import SlideSpeed from "../components/SlideSpeed";
-import { intervalTimer } from "../../../public/utils/randomizeDirection";
+import { intervalTimer } from "../../../public/utils/randomize";
 
 const RandomArrow = () => {
   // const sound = new Audio("./sounds/button-3.wav");
@@ -18,7 +18,7 @@ const RandomArrow = () => {
     if (isRunning) {
       interval = setInterval(() => {
         intervalTimer(setDirection, direction);
-      }, 1500 / (speed / 2.5));
+      }, speed);
     }
     return () => clearInterval(interval);
   }, [isRunning, speed, direction]);
@@ -29,7 +29,7 @@ const RandomArrow = () => {
         "flex flex-col items-center justify-center h-screen bg-gray-200"
       }
     >
-      <SlideSpeed speed={speed} setSpeed={setSpeed} min={1} max={5} />
+      <SlideSpeed speed={speed} setSpeed={setSpeed} />
 
       {isRunning && <ArrowRandom direction={direction} />}
 

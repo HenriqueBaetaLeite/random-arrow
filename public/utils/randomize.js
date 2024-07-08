@@ -17,3 +17,8 @@ export const intervalTimer = (setDirection, direction, _sound) => {
     setDirection(randomDirection);
   }
 };
+const backGrounds = ["bg-red-500", "bg-blue-500"];
+
+export const randomizeBackGround = () => {
+  return backGrounds[Math.floor(Math.random() * backGrounds.length)];
+};

@@ -1,35 +1,29 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import BackHomeButton from "../components/BackHomeButton";
-import RestartTimerButton from "../components/RestartTimerButton";
 import MyFooter from "../components/MyFooter";
 import SlideSpeed from "../components/SlideSpeed";
-
-import YellowButton from "../components/YellowButton";
 import GreenButton from "../components/GreenButton";
+import YellowButton from "../components/YellowButton";
 
-const oneMinute = 20000;
+import { randomizeBackGround } from "../../../public/utils/randomize";
 
 const BackgroundSwitcher = () => {
-  const [isRed, setIsRed] = useState(true);
   const [isRunning, setIsRunning] = useState(false);
   const [finish, setFinish] = useState(false);
   const [speed, setSpeed] = useState(2500);
-  // const sound = new Audio("./sounds/button-3.wav");
-  // // const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
+  const [background, setBackground] = useState("bg-red-500");
 
-  let switchTimeOut;
   let interval;
 
   const clearingTimer = () => {
     clearInterval(interval);
-    clearTimeout(switchTimeOut);
   };
 
   const finishGame = () => {
     clearingTimer();
     setFinish(true);
-    // soundFinished.play();
+    setIsRunning(false);
   };
 
   const startTimer = () => {
@@ -37,13 +31,8 @@ const BackgroundSwitcher = () => {
     setFinish(false);
 
     interval = setInterval(() => {
-      setIsRed((prevIsRed) => !prevIsRed);
-      // sound.play();
+      setBackground(randomizeBackGround());
     }, speed);
-
-    switchTimeOut = setTimeout(() => {
-      finishGame();
-    }, oneMinute);
   };
 
   useEffect(() => {
@@ -53,53 +42,29 @@ const BackgroundSwitcher = () => {
     return () => {
       clearingTimer();
     };
-  }, [isRunning]);
+  }, [isRunning, speed]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
-      <SlideSpeed
-        className={`${isRed ? "bg-red-500" : "bg-blue-500"}`}
-        speed={speed}
-        setSpeed={setSpeed}
-        min={1000}
-        max={5000}
-      />
+      <SlideSpeed speed={speed} setSpeed={setSpeed} />
       {!isRunning && (
         <div className="flex flex-col items-center justify-center m-3">
           <div>
-            {/* <GreenButton text={"Start"} onClicker={() => setIsRunning(true)} /> */}
-            <button
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => setIsRunning(true)}
-            >
-              Start
-            </button>
-            {/* <RestartTimerButton restartTimer={startTimer} /> */}
-
+            <GreenButton
+              text={"Iniciar"}
+              onClicker={() => setIsRunning(true)}
+            />
             <BackHomeButton />
           </div>
+
           <MyFooter />
         </div>
       )}
       {!finish && isRunning && (
         <div
-          className={`w-full h-screen transition-colors duration-500 flex justify-center items-end ${
-            isRed ? "bg-red-500" : "bg-blue-500"
-          }`}
-        ></div>
-      )}
-      {finish && (
-        <div className="flex flex-col items-center justify-center m-3">
-          <h1 className="text-5xl m-5 text-black font-bold">
-            Round finalizado!
-          </h1>
-
-          <div>
-            <RestartTimerButton restartTimer={startTimer} />
-
-            <BackHomeButton />
-          </div>
-          <MyFooter />
+          className={`w-full h-screen transition-colors duration-500 flex justify-center items-end ${background}`}
+        >
+          <YellowButton text={"Parar"} onClicker={finishGame} />
         </div>
       )}
     </div>
