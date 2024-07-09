@@ -30,7 +30,6 @@ export const intervalTimer = (setDirection, direction, _sound) => {
 
 export const intervalTimer2 = (setDirection, direction, _sound) => {
   const randomDirection = randomizeDirection(sevenArrows);
-  console.log("interval2", randomDirection);
 
   if (randomDirection === direction) {
     // sound.play();
