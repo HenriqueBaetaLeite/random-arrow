@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import BackHomeButton from "../components/BackHomeButton";
-import ArrowRandom from "../components/ArrowRandom";
+import ArrowRandom from "../components/ArrowRandom2";
 import MyFooter from "../components/MyFooter";
 import StartStopButton from "../components/StartStopButton";
 import SlideSpeed from "../components/SlideSpeed";
-import { intervalTimer } from "../../../public/utils/randomize";
+import { intervalTimer2 } from "../../../public/utils/randomize";
 
 const RandomArrow = () => {
   // const sound = new Audio("./sounds/button-3.wav");
@@ -17,7 +17,7 @@ const RandomArrow = () => {
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        intervalTimer(setDirection, direction);
+        intervalTimer2(setDirection, direction);
       }, speed);
     }
     return () => clearInterval(interval);
