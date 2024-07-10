@@ -12,12 +12,14 @@ const RandomArrow = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [speed, setSpeed] = useState(1000);
   const [direction, setDirection] = useState("");
+  const [sound, setSound] = useState("");
 
   useEffect(() => {
+    setSound(document.getElementById("audio"));
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        intervalTimer(setDirection, direction);
+        intervalTimer(setDirection, direction, sound);
       }, speed);
     }
     return () => clearInterval(interval);
@@ -29,6 +31,7 @@ const RandomArrow = () => {
         "flex flex-col items-center justify-center h-screen bg-gray-200"
       }
     >
+      <audio id="audio" src="./sounds/button-3.wav"></audio>
       <SlideSpeed speed={speed} setSpeed={setSpeed} />
 
       {isRunning && <ArrowRandom direction={direction} />}

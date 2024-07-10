@@ -15,6 +15,8 @@ const BackgroundSwitcher = () => {
   const [speed, setSpeed] = useState(2500);
   const [background, setBackground] = useState(randomizeBackGround());
   const [timer, setTimer] = useState("");
+  const [sound, setSound] = useState("");
+  const [soundFinished, setSoundFinished] = useState("");
   // const sound = new Audio("./sounds/button-3.wav");
   // const soundFinished = new Audio("./sounds/bell-ringing-04.mp3");
 
@@ -29,7 +31,7 @@ const BackgroundSwitcher = () => {
   const finishGame = () => {
     clearingTimer();
     setFinish(true);
-    // soundFinished.play();
+    soundFinished.play();
   };
 
   const startTimer = () => {
@@ -38,7 +40,7 @@ const BackgroundSwitcher = () => {
 
     interval = setInterval(() => {
       setBackground(randomizeBackGround());
-      // sound.play();
+      sound.play();
     }, speed);
 
     switchTimeOut = setTimeout(() => {
@@ -47,6 +49,8 @@ const BackgroundSwitcher = () => {
   };
 
   useEffect(() => {
+    setSound(document.getElementById("sound"));
+    setSoundFinished(document.getElementById("finish"));
     if (isRunning) {
       startTimer();
     }
@@ -57,6 +61,8 @@ const BackgroundSwitcher = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
+      <audio id="sound" src="./sounds/button-3.wav"></audio>
+      <audio id="finish" src="./sounds/bell-ringing-04.mp3"></audio>
       {!isRunning && (
         <div className="flex flex-col items-center justify-center m-3">
           <div>

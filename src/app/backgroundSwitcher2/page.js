@@ -13,6 +13,8 @@ const BackgroundSwitcher = () => {
   const [finish, setFinish] = useState(false);
   const [speed, setSpeed] = useState(2500);
   const [background, setBackground] = useState("bg-red-500");
+  const [sound, setSound] = useState("");
+  const [soundFinished, setSoundFinished] = useState("");
 
   let interval;
 
@@ -24,6 +26,7 @@ const BackgroundSwitcher = () => {
     clearingTimer();
     setFinish(true);
     setIsRunning(false);
+    soundFinished.play();
   };
 
   const startTimer = () => {
@@ -32,10 +35,13 @@ const BackgroundSwitcher = () => {
 
     interval = setInterval(() => {
       setBackground(randomizeBackGround());
+      sound.play();
     }, speed);
   };
 
   useEffect(() => {
+    setSound(document.getElementById("sound"));
+    setSoundFinished(document.getElementById("finish"));
     if (isRunning) {
       startTimer();
     }
@@ -46,6 +52,8 @@ const BackgroundSwitcher = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
+      <audio id="sound" src="./sounds/button-3.wav"></audio>
+      <audio id="finish" src="./sounds/bell-ringing-04.mp3"></audio>
       <SlideSpeed speed={speed} setSpeed={setSpeed} />
       {!isRunning && (
         <div className="flex flex-col items-center justify-center m-3">
