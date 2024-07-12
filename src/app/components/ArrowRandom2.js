@@ -8,6 +8,7 @@ import rightDown from "./assets/right-down.png";
 import Image from "next/image";
 
 const arrowWidth = 700;
+const arrowWidthAlternative = 650;
 
 const RightArrow = () => <Image src={right} alt="right" width={arrowWidth} />;
 
@@ -16,19 +17,19 @@ const UpArrow = () => <Image src={up} alt="up" width={350} />;
 const LeftArrow = () => <Image src={left} alt="left" width={arrowWidth} />;
 
 const LeftUpArrow = () => (
-  <Image src={leftUp} alt="left-up" width={arrowWidth} />
+  <Image src={leftUp} alt="left-up" width={arrowWidthAlternative} />
 );
 
 const LeftDownArrow = () => (
-  <Image src={leftDown} alt="left-down" width={arrowWidth} />
+  <Image src={leftDown} alt="left-down" width={arrowWidthAlternative} />
 );
 
 const RightUpArrow = () => (
-  <Image src={rightUp} alt="right-up" width={arrowWidth} />
+  <Image src={rightUp} alt="right-up" width={arrowWidthAlternative} />
 );
 
 const RightDownArrow = () => (
-  <Image src={rightDown} alt="right-down" width={arrowWidth} />
+  <Image src={rightDown} alt="right-down" width={arrowWidthAlternative} />
 );
 
 const Arrow7 = ({ direction }) => {

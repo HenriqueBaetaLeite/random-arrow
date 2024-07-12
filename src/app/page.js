@@ -9,7 +9,7 @@ const Home = () => (
   <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
     <CallRandomArrow />
     <CallRandomArrowTwo />
-    <CallBackGroundSwitch />
+    {/* <CallBackGroundSwitch /> */}
     <CallBackGroundSwtichTwo />
     <MyFooter />
   </div>
