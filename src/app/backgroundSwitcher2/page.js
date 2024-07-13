@@ -17,9 +17,11 @@ const BackgroundSwitcher = () => {
   const [soundFinished, setSoundFinished] = useState("");
 
   let interval;
+  let timer;
 
   const clearingTimer = () => {
     clearInterval(interval);
+    clearInterval(timer);
   };
 
   const finishGame = () => {
@@ -34,8 +36,11 @@ const BackgroundSwitcher = () => {
     setFinish(false);
 
     interval = setInterval(() => {
-      setBackground(randomizeBackGround());
-      sound.play();
+      setBackground("bg-black");
+      timer = setTimeout(() => {
+        setBackground(randomizeBackGround());
+        sound.play();
+      }, 250);
     }, speed);
   };
 
@@ -70,7 +75,7 @@ const BackgroundSwitcher = () => {
       )}
       {!finish && isRunning && (
         <div
-          className={`w-full h-screen transition-colors duration-500 flex justify-center items-end ${background}`}
+          className={`w-full h-screen transition-colors duration-400 flex justify-center items-end ${background}`}
         >
           <YellowButton text={"Parar"} onClicker={finishGame} />
         </div>
