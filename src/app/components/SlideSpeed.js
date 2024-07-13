@@ -2,7 +2,7 @@ const SlideSpeed = ({ speed, setSpeed }) => {
   const marks = [1, 2, 3, 4, 5];
 
   return (
-    <div className="m-4 flex flex-col justify-center items-center w-3/12">
+    <div className="m-4 flex flex-col justify-center items-center w-5/12">
       <label htmlFor="speedRange" className="text-black text-2xl m-2">
         {speed / 1000} {speed === 1000 ? "segundo" : "segundos"}
       </label>
