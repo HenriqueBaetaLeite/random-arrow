@@ -32,7 +32,8 @@ const RandomArrow = () => {
       }
     >
       <audio preload="auto" id="audio">
-        <source src="./sounds/button-3.wav" type="audio/wav"></source>
+        {/* <source src="./sounds/button-3.wav" type="audio/wav"></source> */}
+        <source src="https://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg" type="audio/ogg"></source>
       </audio>
       <SlideSpeed speed={speed} setSpeed={setSpeed} />
 
