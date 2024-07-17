@@ -19,7 +19,7 @@ const SlideSpeed = ({ speed, setSpeed }) => {
           list="steplist"
         />
         <datalist id="steplist">
-          <option>1500</option>
+          <option value={1500} label=""></option>
           <option>2500</option>
           <option>3500</option>
           <option>4500</option>

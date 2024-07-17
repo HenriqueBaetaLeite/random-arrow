@@ -31,7 +31,9 @@ const RandomArrow = () => {
         "flex flex-col items-center justify-center h-screen bg-gray-200"
       }
     >
-      <audio id="audio" src="./sounds/button-3.wav"></audio>
+      <audio preload="auto" id="audio">
+        <source src="./sounds/button-3.wav" type="audio/wav"></source>
+      </audio>
       <SlideSpeed speed={speed} setSpeed={setSpeed} />
 
       {isRunning && <ArrowRandom direction={direction} />}
