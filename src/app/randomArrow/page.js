@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import BackHomeButton from "../components/BackHomeButton";
 import ArrowRandom from "../components/ArrowRandom";
 import MyFooter from "../components/MyFooter";
@@ -14,7 +14,7 @@ const RandomArrow = () => {
   const [direction, setDirection] = useState("");
   const [sound, setSound] = useState("");
 
-  const audioRef = useRef(new Audio("./sounds/button-3.wav"));
+  // const audioRef = useRef(new Audio("./sounds/button-3.wav"));
 
   useEffect(() => {
     setSound(() => document.getElementById("audio"));
@@ -27,7 +27,7 @@ const RandomArrow = () => {
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        intervalTimer(setDirection, direction, audioRef.current);
+        intervalTimer(setDirection, direction, sound);
       }, speed);
     }
     return () => clearInterval(interval);
