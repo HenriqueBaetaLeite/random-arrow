@@ -12,7 +12,7 @@ const RandomArrow = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [speed, setSpeed] = useState(1000);
   const [direction, setDirection] = useState("");
-  const [sound, setSound] = useState(document.getElementById("audio"));
+  const [sound, setSound] = useState("");
 
   const audioRef = useRef(new Audio("./sounds/button-3.wav"));
 
