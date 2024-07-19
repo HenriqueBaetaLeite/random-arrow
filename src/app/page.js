@@ -2,7 +2,7 @@
 import MyFooter from "./components/MyFooter";
 import CallRandomArrow from "./components/CallRandomArrow";
 // import CallBackGroundSwitch from "./components/CallBackGroundSwitch";
-import CallBackGroundSwtichTwo from "./components/CallBackGroundSwitchTwo";
+import CallBackGroundSwitchTwo from "./components/CallBackGroundSwitchTwo";
 import CallRandomArrowTwo from "./components/CallRandomArrowTwo";
 
 const Home = () => (
@@ -10,7 +10,7 @@ const Home = () => (
     <CallRandomArrow />
     <CallRandomArrowTwo />
     {/* <CallBackGroundSwitch /> */}
-    <CallBackGroundSwtichTwo />
+    <CallBackGroundSwitchTwo />
     <MyFooter />
   </div>
 );

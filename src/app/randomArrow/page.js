@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BackHomeButton from "../components/BackHomeButton";
 import ArrowRandom from "../components/ArrowRandom";
 import MyFooter from "../components/MyFooter";
@@ -12,14 +12,22 @@ const RandomArrow = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [speed, setSpeed] = useState(1000);
   const [direction, setDirection] = useState("");
-  const [sound, setSound] = useState("");
+  const [sound, setSound] = useState(document.getElementById("audio"));
+
+  const audioRef = useRef(new Audio("./sounds/button-3.wav"));
 
   useEffect(() => {
-    setSound(document.getElementById("audio"));
+    setSound(() => document.getElementById("audio"));
+    // document.addEventListener("touchstart", () => {
+    //   sound.src = "./sounds/button-3.wav";
+    //   sound.loop = true;
+    // sound.play();
+    // sound.pause();
+    // });
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        intervalTimer(setDirection, direction, sound);
+        intervalTimer(setDirection, direction, audioRef.current);
       }, speed);
     }
     return () => clearInterval(interval);
@@ -32,11 +40,11 @@ const RandomArrow = () => {
       }
     >
       <audio preload="auto" id="audio">
-        {/* <source src="./sounds/button-3.wav" type="audio/wav"></source> */}
-        <source
+        <source src="./sounds/button-3.wav" type="audio/wav"></source>
+        {/* <source
           src="https://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg"
           type="audio/ogg"
-        ></source>
+        ></source> */}
       </audio>
       <SlideSpeed speed={speed} setSpeed={setSpeed} />
 
