@@ -33,16 +33,22 @@ const RandomArrow = () => {
     >
       <audio preload="auto" id="audio">
         {/* <source src="./sounds/button-3.wav" type="audio/wav"></source> */}
-        <source src="https://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg" type="audio/ogg"></source>
+        <source
+          src="https://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg"
+          type="audio/ogg"
+        ></source>
       </audio>
       <SlideSpeed speed={speed} setSpeed={setSpeed} />
 
       {isRunning && <ArrowRandom direction={direction} />}
 
-      <StartStopButton isRunning={isRunning} setIsRunning={setIsRunning} />
-
-      {!isRunning && <BackHomeButton />}
-      {!isRunning && <MyFooter />}
+      <div className="flex flex-col items-center justify-center m-3">
+        <div>
+          <StartStopButton isRunning={isRunning} setIsRunning={setIsRunning} />
+          {!isRunning && <BackHomeButton />}
+        </div>
+        {!isRunning && <MyFooter />}
+      </div>
     </div>
   );
 };

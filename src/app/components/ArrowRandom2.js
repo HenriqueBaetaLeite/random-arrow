@@ -1,10 +1,10 @@
-import up from "./assets/up2.png";
+import up from "./assets/up-blue.png";
 import left from "./assets/left2.png";
 import right from "./assets/right2.png";
 import leftUp from "./assets/left-up.png";
-import leftDown from "./assets/left-down.png";
+import leftDown from "./assets/left-down-red.png";
 import rightUp from "./assets/right-up.png";
-import rightDown from "./assets/right-down.png";
+import rightDown from "./assets/right-down-red.png";
 import Image from "next/image";
 
 const arrowWidth = 700;
@@ -12,7 +12,7 @@ const arrowWidthAlternative = 650;
 
 const RightArrow = () => <Image src={right} alt="right" width={arrowWidth} />;
 
-const UpArrow = () => <Image src={up} alt="up" width={350} />;
+const UpArrow = () => <Image src={up} alt="up" width={350} height={250} />;
 
 const LeftArrow = () => <Image src={left} alt="left" width={arrowWidth} />;
 

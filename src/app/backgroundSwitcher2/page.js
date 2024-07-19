@@ -11,7 +11,7 @@ import { randomizeBackGround } from "../../../public/utils/randomize";
 const BackgroundSwitcher = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [finish, setFinish] = useState(false);
-  const [speed, setSpeed] = useState(2500);
+  const [speed, setSpeed] = useState(1000);
   const [background, setBackground] = useState("bg-red-500");
   const [sound, setSound] = useState("");
   const [soundFinished, setSoundFinished] = useState("");

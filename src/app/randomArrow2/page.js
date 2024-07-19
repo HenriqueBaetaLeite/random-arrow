@@ -36,10 +36,13 @@ const RandomArrow = () => {
 
       {isRunning && <ArrowRandom direction={direction} />}
 
-      <StartStopButton isRunning={isRunning} setIsRunning={setIsRunning} />
-
-      {!isRunning && <BackHomeButton />}
-      {!isRunning && <MyFooter />}
+      <div className="flex flex-col items-center justify-center m-3">
+        <div>
+          <StartStopButton isRunning={isRunning} setIsRunning={setIsRunning} />
+          {!isRunning && <BackHomeButton />}
+        </div>
+        {!isRunning && <MyFooter />}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 import MyFooter from "./components/MyFooter";
 import CallRandomArrow from "./components/CallRandomArrow";
-import CallBackGroundSwitch from "./components/CallBackGroundSwitch";
+// import CallBackGroundSwitch from "./components/CallBackGroundSwitch";
 import CallBackGroundSwtichTwo from "./components/CallBackGroundSwitchTwo";
 import CallRandomArrowTwo from "./components/CallRandomArrowTwo";
 
