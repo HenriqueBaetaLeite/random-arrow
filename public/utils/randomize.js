@@ -18,13 +18,12 @@ export const intervalTimer = (setDirection, direction, sound) => {
   const randomDirection = randomizeDirection(directions);
 
   if (randomDirection === direction) {
-    sound.play();
     const randomDirection = randomizeDirection(directions);
-
     setDirection(randomDirection);
-  } else {
     sound.play();
+  } else {
     setDirection(randomDirection);
+    sound.play();
   }
 };
 
@@ -32,13 +31,12 @@ export const intervalTimer2 = (setDirection, direction, sound) => {
   const randomDirection = randomizeDirection(sevenArrows);
 
   if (randomDirection === direction) {
-    sound.play();
     const randomDirection = randomizeDirection(sevenArrows);
-
     setDirection(randomDirection);
-  } else {
     sound.play();
+  } else {
     setDirection(randomDirection);
+    sound.play();
   }
 };
 
